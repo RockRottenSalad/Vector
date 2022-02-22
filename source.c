@@ -1,10 +1,11 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include"vector.c" // libary with vector functions
 
 double ax,ay,az,bx,by,bz;
-double x, y, z;
+int rows;
 
 double vectors[][3] = {
   {0,0,0}
@@ -13,20 +14,42 @@ double vectors[][3] = {
 void options2VECTOR(){
   int option;
   char vector1, vector2;
-  printf("Vector A: (%f, %f, %f)\n", ax,ay,az);
-  printf("Vector B: (%f, %f, %f)\n", bx,by,bz);
-  printf("Options:\n");
-  printf("[1] Plus vector\n");
-  printf("[2] Kryds produkt/cross\n");
-  printf("[3] Quit\n");
+  for(int i = 1; i <= rows; i++){
+    printf("Vector %c: (%f, %f, %f)\n", (i-1)+65,vectors[i-1][0],vectors[i-1][1],vectors[i-1][2]);
+  }
+  printf("\nOptions:\n");
+  printf("[1] Addition with vectors\n");
+  printf("[2] Cross product\n");
+  printf("[3] Quit program\n");
 
-  scanf("%d &c &c", &option, &vector1, &vector2);
+  scanf("%d", &option);
+
+  switch(option){
+    case 3:
+    exit(0);
+  }
+
+  printf("\nWhich vectors would you like to use in this operation?(e.g. ABC)\n");
+  char input[10];
+  scanf("%s", input);
+  double vectorvalues[50];
+  int counter = 0;
+  int temp;
+  for(int i = 0; i < strlen(input); i++){
+    temp = input[i]-65;
+    printf("temp: %d", temp);
+    vectorvalues[counter + 0] = vectors[temp][0];
+    vectorvalues[counter + 1] = vectors[temp][1];
+    vectorvalues[counter + 2] = vectors[temp][2];
+    counter += 3;
+  }
+
   switch (option) {
     case 1:
-    plus(ax,ay,az,bx,by,bz);
+    plus(vectorvalues, counter);
     break;
     case 2:
-    cross(ax,ay,az,bx,by,bz);
+    cross(vectorvalues, counter);
     break;
     case 3:
     exit(0);
@@ -36,19 +59,20 @@ void options2VECTOR(){
 
 int main(int argc, char * argv[]){
   int count;
-  if(argc < 2){
-    printf("Usage: \n ./program amount_of_vectors Ax Ay Az Bx By Bz\n");
-    exit(0);
-  }
+  double x, y, z;
   sscanf(argv[1], "%d", &count);
+  //count = 2;
+  rows = count;
 
-  for(int i; i <= count; i++){
-    printf("X, Y, Z til vector %d", i);
-    scanf("%d %d %d", &x, &y, &z);
+  for(int i = 0; i <= (count-1); i++){
+    printf("X, Y, Z til vector %d\n", i+1);
+    scanf("%lf %lf %lf", &x, &y, &z);
+  //  printf("%f", x);
     vectors[i][0] = x;
     vectors[i][1] = y;
     vectors[i][2] = z;
   }
+  options2VECTOR();
 
   /*if(count == 1){
     sscanf(argv[2], "%lf", &ax);
