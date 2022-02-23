@@ -20,12 +20,13 @@ void options2VECTOR(){
   printf("\nOptions:\n");
   printf("[1] Addition with vectors\n");
   printf("[2] Cross product\n");
-  printf("[3] Quit program\n");
+  printf("[3] Scalar product\n");
+  printf("[4] Quit program\n");
 
   scanf("%d", &option);
 
   switch(option){
-    case 3:
+    case 4:
     exit(0);
   }
 
@@ -37,7 +38,6 @@ void options2VECTOR(){
   int temp;
   for(int i = 0; i < strlen(input); i++){
     temp = input[i]-65;
-    printf("temp: %d", temp);
     vectorvalues[counter + 0] = vectors[temp][0];
     vectorvalues[counter + 1] = vectors[temp][1];
     vectorvalues[counter + 2] = vectors[temp][2];
@@ -52,6 +52,9 @@ void options2VECTOR(){
     cross(vectorvalues, counter);
     break;
     case 3:
+    skalar(vectorvalues, counter);
+    break;
+    case 4:
     exit(0);
   }
   options2VECTOR();

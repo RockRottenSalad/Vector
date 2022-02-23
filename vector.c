@@ -23,7 +23,7 @@ void cross(double nums[], int indexcount){
   if(indexcount < 6){
     printf("Requires at least 2 vectors");
   }else{
-    for(int i = 0; i <= indexcount; i+3){
+    for(int i = 0; i <= indexcount; i+1-1){
       if(count == indexcount/3){
         break;
       }
@@ -31,6 +31,7 @@ void cross(double nums[], int indexcount){
       y_array[count] = nums[i + 1];
       z_array[count] = nums[i + 2];
       count++;
+      i += 3;
     }
   }
 
@@ -38,8 +39,16 @@ void cross(double nums[], int indexcount){
   y += (z_array[0] * x_array[1] - (x_array[0] * z_array[1]));
   z += (x_array[0] * y_array[1]) - (y_array[0] * x_array[1]);
   if(indexcount > 6){
-    for(int i = 2; i <= indexcount/3; i++){
-      printf("not finished yet");
+    double tempx, tempy, tempz;
+    for(int i = 2; i < indexcount/3; i++){
+  //    printf("%f %f %f-",x_array[i],y_array[i], z_array[i]);
+      tempx = (y * z_array[i]) - (z * y_array[i]);
+      tempy = (z * x_array[i]) - (x * z_array[i]);
+      tempz = (x * y_array[i]) - (y * x_array[i]);
+
+      x = tempx;
+      y = tempy;
+      z = tempz;
     }
   }
 
@@ -66,8 +75,9 @@ void plus(double nums[], int indexcount){
   int count = 0;
   if(indexcount < 6){
     printf("Requires at least 2 vectors");
+  //  exit();
   }else{
-    for(int i = 0; i <= indexcount; i+3){
+    for(int i = 0; i <= indexcount; i+1-1){
       if(count == indexcount/3){
         break;
       }
@@ -75,19 +85,55 @@ void plus(double nums[], int indexcount){
       y_array[count] = nums[i + 1];
       z_array[count] = nums[i + 2];
       count++;
+      i += 3;
     }
   }
-  printf("--%f--", x_array[0]);
-  printf("--%f--", x_array[1]);
   for(int i = 0; i <= (indexcount/3)-1; i++){
     x += x_array[i];
     y += y_array[i];
     z += z_array[i];
   }
-    printf("Added vectors: (%f, %f, %f)",x,y,z);
+    printf("Added vectors: (%f, %f, %f)\n",x,y,z);
 
 }
 
-void skalar(double ax, double ay, double az, double bx, double by, double bz){
-  double Sum = (ax * bx) + (ay * by) + (az * bz);
+void skalar(double nums[], int indexcount){
+  //double Sum = (ax * bx) + (ay * by) + (az * bz);
+  double x_array[100];
+  double y_array[100];
+  double z_array[100];
+  double x, y, z;
+
+  int count = 0;
+  if(indexcount < 6){
+    printf("Requires at least 2 vectors");
+  }else{
+    for(int i = 0; i <= indexcount; i+1-1){
+      if(count == indexcount/3){
+        break;
+      }
+      x_array[count] = nums[i];
+      y_array[count] = nums[i + 1];
+      z_array[count] = nums[i + 2];
+      count++;
+      i += 3;
+    }
+  }
+  x = (x_array[0] * x_array[1]);
+  y = (y_array[0] * y_array[1]);
+  z = (z_array[0] * z_array[1]);
+  if(indexcount > 6){
+    double tempx, tempy, tempz;
+    for(int i = 2; i < indexcount/3; i++){
+      printf("%f %f %f", x_array[2], y_array[2], z_array[2]);
+      tempx = (x * x_array[i]);
+      tempy = (y * y_array[i]);
+      tempz = (z * z_array[i]);
+      x = tempx;
+      y = tempy;
+      z = tempz;
+    }
+  }
+  double sum = x+y+z;
+  printf("\nScalar product: %f\n", sum);
 }
