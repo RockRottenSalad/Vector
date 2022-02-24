@@ -21,12 +21,13 @@ void options2VECTOR(){
   printf("[1] Addition with vectors\n");
   printf("[2] Cross product\n");
   printf("[3] Scalar product\n");
-  printf("[4] Quit program\n");
+  printf("[4] Length of vector\n");
+  printf("[5] Quit program\n");
 
   scanf("%d", &option);
 
   switch(option){
-    case 4:
+    case 5:
     exit(0);
   }
 
@@ -43,18 +44,28 @@ void options2VECTOR(){
     vectorvalues[counter + 2] = vectors[temp][2];
     counter += 3;
   }
+  double returnvector[10];
 
   switch (option) {
     case 1:
-    plus(vectorvalues, counter);
+    plus(vectorvalues, counter, 0);
+    break;
+    case -1:
+    returnvector[] = plus(vectorvalues, counter, 1);
     break;
     case 2:
-    cross(vectorvalues, counter);
+    cross(vectorvalues, counter, 0);
+    break;
+    case -2:
+    cross(vetorvalues, counter, 1)
     break;
     case 3:
-    skalar(vectorvalues, counter);
+    skalar(vectorvalues, counter, 0);
     break;
     case 4:
+    length(vectorvalues, counter, 0);
+    break;
+    case 5:
     exit(0);
   }
   options2VECTOR();
@@ -68,7 +79,7 @@ int main(int argc, char * argv[]){
   rows = count;
 
   for(int i = 0; i <= (count-1); i++){
-    printf("X, Y, Z til vector %d\n", i+1);
+    printf("X, Y, Z for vector %c\n", i+65);
     scanf("%lf %lf %lf", &x, &y, &z);
   //  printf("%f", x);
     vectors[i][0] = x;
