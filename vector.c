@@ -6,9 +6,10 @@
 double x_array[100];
 double y_array[100];
 double z_array[100];
+double returnarray[50];
 double x, y, z;
 
-FILE * outputfile;
+//FILE * outputfile;
 
 void ArraySplit(double nums[], int indexcount){
   int count = 0;
@@ -32,12 +33,14 @@ void ArrayClear(){
   memset(x_array, 0, sizeof x_array);
   memset(y_array, 0, sizeof y_array);
   memset(z_array, 0, sizeof z_array);
+  memset(returnarray, 0, sizeof returnarray);
   x = 0.0;
   y = 0.0;
   z = 0.0;
 }
 
-void cross(double nums[], int indexcount){
+double *cross(double nums[], int indexcount, int save){
+  ArrayClear();
 
   ArraySplit(nums, indexcount);
 
@@ -58,10 +61,18 @@ void cross(double nums[], int indexcount){
   }
 
   printf("\nCross product: (%f, %f, %f)\n\n", x, y, z);
-  ArrayClear();
+  switch(save){
+    case 1:
+    returnarray[0] = x;
+    returnarray[1] = y;
+    returnarray[2] = z;
+    return returnarray;
+  }
+//  system("clear");
 }
 
-void plus(double nums[], int indexcount){
+double *plus(double nums[], int indexcount, int save){
+  ArrayClear();
 
   ArraySplit(nums, indexcount);
 
@@ -71,12 +82,18 @@ void plus(double nums[], int indexcount){
     z += z_array[i];
   }
     printf("\nAdded vectors: (%f, %f, %f)\n\n",x,y,z);
-    ArrayClear();
-
+    switch(save){
+      case 1:
+      returnarray[0] = x;
+      returnarray[1] = y;
+      returnarray[2] = z;
+      return returnarray;
+    }
+  //  system("clear");
 }
 
 void skalar(double nums[], int indexcount){
-
+  ArrayClear();
   ArraySplit(nums, indexcount);
 
   x = (x_array[0] * x_array[1]);
@@ -95,11 +112,16 @@ void skalar(double nums[], int indexcount){
   }
   double sum = x+y+z;
   printf("\nScalar product: %f\n\n", sum);
-  ArrayClear();
+//  system("clear");
 }
 
 void length(double nums[], int indexcount){
-  ArraySplit(nums, indexcount);
-
   ArrayClear();
+  //ArraySplit(nums, indexcount);
+  x = nums[0];
+  y = nums[1];
+  z = nums[2];
+  double output = sqrt(x+y+z);
+  printf("\nLength of vector: %f\n\n", output);
+  //system("clear");
 }
