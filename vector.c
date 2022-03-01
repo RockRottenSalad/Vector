@@ -121,7 +121,7 @@ void length(double nums[], int indexcount){
   x = nums[0];
   y = nums[1];
   z = nums[2];
-  double output = sqrt(x+y+z);
+  double output = sqrt((x * x) + (y * y) + (z * z));
   printf("\nLength of vector: %f\n\n", output);
   //system("clear");
 }

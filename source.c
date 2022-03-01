@@ -43,15 +43,12 @@ void ModifyVectors(){
 
     break;
     case 2:
-    printf("\nHow many vectors would you like to remove?\n");
-    scanf("%d", &choice);
-    for(int i = 0; i <= choice; i++){
-      for(int i2 = 1; i2 <= rows; i2++){
+  /*    for(int i2 = 1; i2 <= rows; i2++){
         printf("Vector %c: (%f, %f, %f)\n",(i2-1)+65,vectors[i2-1][0],vectors[i2-1][1],vectors[i2-1][2]);
-      }
+      }*/
       char input;
       printf("\n\nPlease select !1! vector to remove\n");
-      scanf("%c", &input);
+      scanf("%s", &input);
       rows--;
       int vectorindex = input-65;
       vectors[vectorindex][0] = 0;
@@ -59,18 +56,18 @@ void ModifyVectors(){
       vectors[vectorindex][2] = 0;
       int loop = 1;
       while(1 == 1){
-        if(vectors[vectorindex+loop][0] == 0 && vectors[vectorindex+loop][1] == 0 && vectors[vectorindex+loop][2] == 0){
-          break;
+        vectorindex++;
+        if(vectors[vectorindex][0] != 0 && vectors[vectorindex][1] != 0){
+          vectors[vectorindex-1][0] = vectors[vectorindex][0];
+          vectors[vectorindex-1][1] = vectors[vectorindex][1];
+          vectors[vectorindex-1][2] = vectors[vectorindex][2];
         }else{
-          vectors[vectorindex+1-loop][0] = vectors[vectorindex+loop][0];
-          vectors[vectorindex+1-loop][1] = vectors[vectorindex+loop][1];
-          vectors[vectorindex+1-loop][2] = vectors[vectorindex+loop][2];
-          loop++;
+          break;
+        }
         }
       }
-    }
 
-  }
+
   system("clear");
   void options2VECTOR();
   options2VECTOR();
