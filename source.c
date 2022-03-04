@@ -43,7 +43,7 @@ void ModifyVectors(){
 
     break;
     case 2:
-  /*    for(int i2 = 1; i2 <= rows; i2++){
+  /* Old   for(int i2 = 1; i2 <= rows; i2++){
         printf("Vector %c: (%f, %f, %f)\n",(i2-1)+65,vectors[i2-1][0],vectors[i2-1][1],vectors[i2-1][2]);
       }*/
       char input;
