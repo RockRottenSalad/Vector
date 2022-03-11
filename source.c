@@ -27,13 +27,11 @@ void ModifyVectors(){
     case 1:
     printf("\nHow many vectors would you like to add?\n");
     scanf("%d", &choice);
-  //  rows += choice;
   double x, y, z;
   choice = rows+choice;
     for(int i = rows; i < (choice); i++){
       printf("X, Y, Z for vector %c\n", i+65);
       scanf("%lf %lf %lf", &x, &y, &z);
-    //  printf("%f", x);
     rows++;
       vectors[rows-1][0] = x;
       vectors[rows-1][1] = y;
@@ -43,9 +41,6 @@ void ModifyVectors(){
 
     break;
     case 2:
-  /* Old   for(int i2 = 1; i2 <= rows; i2++){
-        printf("Vector %c: (%f, %f, %f)\n",(i2-1)+65,vectors[i2-1][0],vectors[i2-1][1],vectors[i2-1][2]);
-      }*/
       char input;
       printf("\n\nPlease select !1! vector to remove\n");
       scanf("%s", &input);
@@ -154,7 +149,6 @@ int main(int argc, char * argv[]){
   for(int i = 0; i <= (count-1); i++){
     printf("X, Y, Z for vector %c\n", i+65);
     scanf("%lf %lf %lf", &x, &y, &z);
-  //  printf("%f", x);
     vectors[i][0] = x;
     vectors[i][1] = y;
     vectors[i][2] = z;
