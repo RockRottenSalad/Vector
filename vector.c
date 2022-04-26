@@ -9,8 +9,6 @@ double z_array[100];
 double returnarray[50];
 double x, y, z;
 
-//FILE * outputfile;
-
 void ArraySplit(double nums[], int indexcount){
   int count = 0;
   if(indexcount < 6){
