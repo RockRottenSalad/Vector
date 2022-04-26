@@ -27,11 +27,13 @@ void ModifyVectors(){
     case 1:
     printf("\nHow many vectors would you like to add?\n");
     scanf("%d", &choice);
+  //  rows += choice;
   double x, y, z;
   choice = rows+choice;
     for(int i = rows; i < (choice); i++){
       printf("X, Y, Z for vector %c\n", i+65);
       scanf("%lf %lf %lf", &x, &y, &z);
+    //  printf("%f", x);
     rows++;
       vectors[rows-1][0] = x;
       vectors[rows-1][1] = y;
@@ -74,7 +76,7 @@ void options2VECTOR(){
   for(int i = 1; i <= rows; i++){
     printf("Vector %c: (%f, %f, %f)\n", (i-1)+65,vectors[i-1][0],vectors[i-1][1],vectors[i-1][2]);
   }
-  printf("\nOptions(Include - in front of option to save vector):\n");
+  printf("\nOptions:\n");
   printf("[1] Addition with vectors\n");
   printf("[2] Cross product\n");
   printf("[3] Scalar product\n");
@@ -142,13 +144,15 @@ void options2VECTOR(){
 int main(int argc, char * argv[]){
   int count;
   double x, y, z;
-  sscanf(argv[1], "%d", &count);
+  printf("How many vectors would you like?\n");
+  scanf("%d", &count);
   //count = 2;
   rows = count;
 
   for(int i = 0; i <= (count-1); i++){
     printf("X, Y, Z for vector %c\n", i+65);
     scanf("%lf %lf %lf", &x, &y, &z);
+  //  printf("%f", x);
     vectors[i][0] = x;
     vectors[i][1] = y;
     vectors[i][2] = z;
